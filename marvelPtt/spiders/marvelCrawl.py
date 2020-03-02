@@ -13,23 +13,19 @@ class MyspiderSpider(scrapy.Spider):
 
     def parse(self, response):
         data = response.body.decode()
-        # print(data)
-        # 選擇器
         selector = scrapy.Selector(text=data)
         total = selector.xpath('//*[@id="main-container"]/div[2]/div')
         
         for article in total:
             item = MarvelpttItem()
             x1 = article.xpath('./div[2]/a/text()').extract()
-            # print(x1)
-            #第一個是搜尋，不需要
             if len(x1) == 0:
                 continue
             else:
                 item['title'] = x1[0]
                 item['postUser'] = article.xpath('./div[3]/div[1]/text()').extract()[0]
                 item['time'] = article.xpath('./div[3]/div[3]/text()').extract()[0]
-                #推文有些有，有些沒有要判斷
+
                 x2 = article.xpath('./div/span/text()').extract()
                 if len(x2) == 0:
                 	item['push'] = '0'
