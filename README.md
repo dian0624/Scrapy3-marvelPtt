@@ -5,7 +5,7 @@
     找出URL規律作為翻頁**URL的拼接**，輸入欲爬取頁數訪問頁面獲取響應，構建Selector選擇器**xpath匹配**並判斷抓取標題、po文用戶名、po文時間、推文數，
     將**資料儲存為csv檔**。
   
-    新增UserAgent文件且在middleware中使用random模塊隨機使用UserAgent，打開settings中的MIDDLEWARES通道。
+    新增UserAgent文件且在**middleware**中使用**random模塊隨機使用UserAgent**，打開settings中的MIDDLEWARES通道。
     
 ------------------------------------------------------------------    
 功能說明: 
